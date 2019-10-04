@@ -21,7 +21,7 @@ def main():
                                 help="alignment between contigs")
     parser.add_argument('-vcf', dest="vcf_file", type=str, required=True,
                                 help="reads mapping profile in vcf format")
-    parser.add_argument('-ref', dest="reference_alignment", type=str,
+    parser.add_argument('-ref', dest="reference_alignment", type=str, required=True,
                                 help="alignment on reference genomes")
     parser.add_argument('-bin', dest='bin_number', type=int, help="bin number for distribution of EM, default: 1000")
 
