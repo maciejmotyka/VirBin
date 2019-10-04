@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # input data, edit this for input reads and contig files 
-read_file=../data/hiv5_simulate_reads.fa
-contig_file=../data/hiv5_contigs.fa
+read_file=$1
+contig_file=$2
 
 # contig index output path
 if [ ! -d "./index" ]; then
@@ -20,7 +20,7 @@ bowtie2 -x $contig_ref -f --score-min G,20,8 --local -t -p 8 -S $OUT"_$L.sam" $r
 
 samtools view -hS -F 4 $OUT"_$L.sam" >$OUT"_"$L"_mapped.sam"
 samtools view -bS $OUT"_"$L"_mapped.sam" > $OUT"_"$L"_mapped.bam"
-samtools sort $OUT"_"$L"_mapped.bam" $OUT"_"$L"_mapped_sort"
+samtools sort $OUT"_"$L"_mapped.bam" -o $OUT"_"$L"_mapped_sort.bam"
 samtools mpileup -f $contig_file $OUT"_"$L"_mapped_sort.bam" -D -u >$OUT"_"$L".bcf"
 
 bcftools view $OUT"_"$L".bcf" >$OUT"_"$L".vcf"
