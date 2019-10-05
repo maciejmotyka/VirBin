@@ -46,7 +46,7 @@ def main():
     f_out = open('contigs_windows.txt', 'w')
     all_windows = []
     for con in fa_dict:
-        win_out =  get_abundance_on_contig(G, con_profile, con, fa_dict, align_dict)
+        win_out =  get_abundance_on_contig(G, con_profile, con, fa_dict)
         if win_out == None:
             continue
         win_results, A, map_idx, align_locs =  get_abundance_on_contig(G, con_profile, con, fa_dict, align_dict)
