@@ -21,7 +21,7 @@ def get_align_profile(profile, start, end, align_seq1, align_seq2):
     A = np.delete(A, rm_idx)
     return A
 
-def get_abundance_on_contig(G, con_profile, vertex, fa_dict, align_dict):
+def get_abundance_on_contig(G, con_profile, vertex, fa_dict):
     # get locations for each contig in the window
     height = G.in_degree(vertex) + G.out_degree(vertex) + 1
     width = len(fa_dict[vertex])
